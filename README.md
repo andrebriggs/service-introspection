@@ -35,6 +35,9 @@ The diagram above has can be read through the following steps:
 
 All cloud infra (Azure DevOps Project, Azure Storage pieces, Azure Function) can be deployed by SPK. The Azure DevOps project and the Azure Queue are decoupled. This means service introspection can easily be added to existing Azure DevOps projects.
 
+We can use the Azure DevOps API to programmatically create service hooks that map to the Azure Storage:
+![service-hooks.png](service-hooks.png)
+
 ## How would we manage?
 
 The introduction of queues means one must deal with all the issues of queues (expiration, dead letter queues, etc). The processor (Az Functions) must be idempotent and must use defensive coding techniqiues when updating and inserting against the indexed storage layer. The indexed storage layer must be cleaned up after a while.
