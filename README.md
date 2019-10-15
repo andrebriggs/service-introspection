@@ -15,7 +15,7 @@ This repository covers an alternative approach to decorating Azure Devops Pipeli
 Spektate requires a client must modify their existing Azure Pipelines YAML files in order to decorate telemetry information. This telemetry is recorded and the begin and ends of Azure pipeline runs and is sent to indexed storage. The key point is that a user must add this telemetry explicity in their production configuration.
 
 Being able to capture this _telemetry_ passively would yield several benefits:
-- Better Speketate onboarding user experience
+- Better Spektate onboarding user experience
 - Less coupling to custom solutions 
 
 ## How would we achieve less coupling and a better onboarding experience?
