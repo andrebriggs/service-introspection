@@ -1,0 +1,44 @@
+{
+    "id": "1a2be968-68f7-485a-8bb7-7a948d99210e",
+    "eventType": "ms.vss-pipelines.stage-state-changed-event",
+    "publisherId": "pipelines",
+    "message": {
+        "text": "Run 20191002.3 stage build running.",
+        "html": "Run 20191002.3 stage <a href=\"https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/results?buildId=480\">build</a> running.",
+        "markdown": "Run 20191002.3 stage [build](https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/results?buildId=480) running."
+    },
+    "detailedMessage": {
+        "text": "Run 20191002.3 stage build running.",
+        "html": "Run 20191002.3 stage <a href=\"https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/results?buildId=480\">build</a> running.",
+        "markdown": "Run 20191002.3 stage [build](https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/results?buildId=480) running."
+    },
+    "resource": {
+        "stage": {
+            "_links": {
+                "web": {
+                    "href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/results?buildId=480"
+                },
+                "pipeline.web": {
+                    "href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/definition?definitionId=7"
+                }
+            },
+            "id": "6884a131-87da-5381-61f3-d7acc3b91d76",
+            "name": "build",
+            "displayName": "build",
+            "state": "running"
+        },
+        "run": {
+            "id": 480,
+            "name": "20191002.3"
+        },
+        "pipeline": {
+            "url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/pipelines/7?revision=2",
+            "id": 7,
+            "revision": 2,
+            "name": "andrebriggs.spartan-app",
+            "folder": "\\"
+        }
+    },
+    "resourceVersion": "5.1-preview.1",
+    "createdDate": "2019-10-02T20:10:39.1376851Z"
+}

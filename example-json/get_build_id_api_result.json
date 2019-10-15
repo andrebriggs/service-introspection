@@ -1,0 +1,137 @@
+{
+"_links": {
+"self": {
+"href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/Builds/481"
+},
+"web": {
+"href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_build/results?buildId=481"
+},
+"sourceVersionDisplayUri": {
+"href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/builds/481/sources"
+},
+"timeline": {
+"href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/builds/481/Timeline"
+},
+"badge": {
+"href": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/status/7"
+}
+},
+"properties": {},
+"tags": [],
+"validationResults": [],
+"plans": [
+{
+"planId": "63d8639b-d727-49ad-8f34-ee3a42cfa89c"
+}
+],
+"triggerInfo": {},
+"id": 481,
+"buildNumber": "20191002.4",
+"status": "completed",
+"result": "succeeded",
+"queueTime": "2019-10-02T21:55:50.8795945Z",
+"startTime": "2019-10-02T21:56:04.844615Z",
+"finishTime": "2019-10-02T22:00:04.8462149Z",
+"url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/Builds/481",
+"definition": {
+"drafts": [],
+"id": 7,
+"name": "andrebriggs.spartan-app",
+"url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/Definitions/7?revision=2",
+"uri": "vstfs:///Build/Definition/7",
+"path": "\\",
+"type": "build",
+"queueStatus": "enabled",
+"revision": 2,
+"project": {
+"id": "efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+"name": "bedrock_gitops",
+"url": "https://dev.azure.com/abrig/_apis/projects/efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+"state": "wellFormed",
+"revision": 25,
+"visibility": "public",
+"lastUpdateTime": "2019-07-24T21:48:08.7Z"
+}
+},
+"buildNumberRevision": 4,
+"project": {
+"id": "efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+"name": "bedrock_gitops",
+"url": "https://dev.azure.com/abrig/_apis/projects/efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+"state": "wellFormed",
+"revision": 25,
+"visibility": "public",
+"lastUpdateTime": "2019-07-24T21:48:08.7Z"
+},
+"uri": "vstfs:///Build/Build/481",
+"sourceBranch": "refs/heads/master",
+"sourceVersion": "8e742f4902221d0efad35b1e9a8cac8550426ba9",
+"queue": {
+"id": 12,
+"name": "Hosted Ubuntu 1604",
+"pool": {
+"id": 6,
+"name": "Hosted Ubuntu 1604",
+"isHosted": true
+}
+},
+"priority": "normal",
+"reason": "individualCI",
+"requestedFor": {
+"displayName": "GitHub",
+"url": "https://spsprodwus21.vssps.visualstudio.com/A66a3ab6d-15a3-4ec3-9ca3-eff42055eef9/_apis/Identities/3b9a8be3-260e-4805-a363-7cb033492c18",
+"_links": {
+"avatar": {
+"href": "https://dev.azure.com/abrig/_apis/GraphProfile/MemberAvatars/svc.NjZhM2FiNmQtMTVhMy00ZWMzLTljYTMtZWZmNDIwNTVlZWY5OkdpdEh1YiBBcHA6ZWZkNDdjZmQtZDM1Zi00MGJhLWI0MjQtZTFhYjQzMmZkYzY4"
+}
+},
+"id": "3b9a8be3-260e-4805-a363-7cb033492c18",
+"uniqueName": "GitHub App\\efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+"imageUrl": "https://dev.azure.com/abrig/_apis/GraphProfile/MemberAvatars/svc.NjZhM2FiNmQtMTVhMy00ZWMzLTljYTMtZWZmNDIwNTVlZWY5OkdpdEh1YiBBcHA6ZWZkNDdjZmQtZDM1Zi00MGJhLWI0MjQtZTFhYjQzMmZkYzY4",
+"descriptor": "svc.NjZhM2FiNmQtMTVhMy00ZWMzLTljYTMtZWZmNDIwNTVlZWY5OkdpdEh1YiBBcHA6ZWZkNDdjZmQtZDM1Zi00MGJhLWI0MjQtZTFhYjQzMmZkYzY4"
+},
+"requestedBy": {
+"displayName": "GitHub",
+"url": "https://spsprodwus21.vssps.visualstudio.com/A66a3ab6d-15a3-4ec3-9ca3-eff42055eef9/_apis/Identities/3b9a8be3-260e-4805-a363-7cb033492c18",
+"_links": {
+"avatar": {
+"href": "https://dev.azure.com/abrig/_apis/GraphProfile/MemberAvatars/svc.NjZhM2FiNmQtMTVhMy00ZWMzLTljYTMtZWZmNDIwNTVlZWY5OkdpdEh1YiBBcHA6ZWZkNDdjZmQtZDM1Zi00MGJhLWI0MjQtZTFhYjQzMmZkYzY4"
+}
+},
+"id": "3b9a8be3-260e-4805-a363-7cb033492c18",
+"uniqueName": "GitHub App\\efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+"imageUrl": "https://dev.azure.com/abrig/_apis/GraphProfile/MemberAvatars/svc.NjZhM2FiNmQtMTVhMy00ZWMzLTljYTMtZWZmNDIwNTVlZWY5OkdpdEh1YiBBcHA6ZWZkNDdjZmQtZDM1Zi00MGJhLWI0MjQtZTFhYjQzMmZkYzY4",
+"descriptor": "svc.NjZhM2FiNmQtMTVhMy00ZWMzLTljYTMtZWZmNDIwNTVlZWY5OkdpdEh1YiBBcHA6ZWZkNDdjZmQtZDM1Zi00MGJhLWI0MjQtZTFhYjQzMmZkYzY4"
+},
+"lastChangedDate": "2019-10-02T22:00:05.03Z",
+"lastChangedBy": {
+"displayName": "Microsoft.VisualStudio.Services.TFS",
+"url": "https://spsprodwus21.vssps.visualstudio.com/A66a3ab6d-15a3-4ec3-9ca3-eff42055eef9/_apis/Identities/00000002-0000-8888-8000-000000000000",
+"_links": {
+"avatar": {
+"href": "https://dev.azure.com/abrig/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA"
+}
+},
+"id": "00000002-0000-8888-8000-000000000000",
+"uniqueName": "00000002-0000-8888-8000-000000000000@2c895908-04e0-4952-89fd-54b0046d6288",
+"imageUrl": "https://dev.azure.com/abrig/_apis/GraphProfile/MemberAvatars/s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA",
+"descriptor": "s2s.MDAwMDAwMDItMDAwMC04ODg4LTgwMDAtMDAwMDAwMDAwMDAwQDJjODk1OTA4LTA0ZTAtNDk1Mi04OWZkLTU0YjAwNDZkNjI4OA"
+},
+"orchestrationPlan": {
+"planId": "63d8639b-d727-49ad-8f34-ee3a42cfa89c"
+},
+"logs": {
+"id": 0,
+"type": "Container",
+"url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/builds/481/logs"
+},
+"repository": {
+"id": "andrebriggs/spartan-app",
+"type": "GitHub",
+"clean": null,
+"checkoutSubmodules": false
+},
+"keepForever": false,
+"retainedByRelease": false,
+"triggeredByBuild": null
+}

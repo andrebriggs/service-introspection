@@ -1,0 +1,67 @@
+{
+    "id": "8ba9c9ea-71a8-43b0-93bf-d9d4cb6d9182",
+    "eventType": "build.complete",
+    "publisherId": "tfs",
+    "message": {
+        "text": "Build 20191002.2 succeeded",
+        "html": "Build <a href=\"https://dev.azure.com/abrig/web/build.aspx?pcguid=b8c9de68-aad9-43cc-b905-d2c277382424&amp;builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f479\">20191002.2</a> succeeded",
+        "markdown": "Build [20191002.2](https://dev.azure.com/abrig/web/build.aspx?pcguid=b8c9de68-aad9-43cc-b905-d2c277382424&builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f479) succeeded"
+    },
+    "detailedMessage": {
+        "text": "Build 20191002.2 succeeded",
+        "html": "Build <a href=\"https://dev.azure.com/abrig/web/build.aspx?pcguid=b8c9de68-aad9-43cc-b905-d2c277382424&amp;builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f479\">20191002.2</a> succeeded",
+        "markdown": "Build [20191002.2](https://dev.azure.com/abrig/web/build.aspx?pcguid=b8c9de68-aad9-43cc-b905-d2c277382424&builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f479) succeeded"
+    },
+    "resource": {
+        "uri": "vstfs:///Build/Build/479",
+        "id": 479,
+        "buildNumber": "20191002.2",
+        "url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/Builds/479",
+        "startTime": "2019-10-02T19:54:05.5251454Z",
+        "finishTime": "2019-10-02T19:57:36.4530107Z",
+        "reason": "individualCI",
+        "status": "succeeded",
+        "drop": {},
+        "log": {},
+        "sourceGetVersion": "LG:refs/heads/master:0ffb2ba5cefa3facdbb2c30df42fdb40afd294d8",
+        "lastChangedBy": {
+            "displayName": "Microsoft.VisualStudio.Services.TFS",
+            "id": "00000000-0000-0000-0000-000000000000",
+            "uniqueName": "00000002-0000-8888-8000-000000000000@2c895908-04e0-4952-89fd-54b0046d6288"
+        },
+        "retainIndefinitely": false,
+        "definition": {
+            "definitionType": "xaml",
+            "id": 7,
+            "name": "andrebriggs.spartan-app",
+            "url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/Definitions/7"
+        },
+        "requests": [
+            {
+                "id": 479,
+                "url": "https://dev.azure.com/abrig/efd47cfd-d35f-40ba-b424-e1ab432fdc68/_apis/build/Requests/479",
+                "requestedFor": {
+                    "displayName": "GitHub",
+                    "id": "3b9a8be3-260e-4805-a363-7cb033492c18",
+                    "uniqueName": "GitHub App\\efd47cfd-d35f-40ba-b424-e1ab432fdc68"
+                }
+            }
+        ]
+    },
+    "resourceVersion": "1.0",
+    "resourceContainers": {
+        "collection": {
+            "id": "b8c9de68-aad9-43cc-b905-d2c277382424",
+            "baseUrl": "https://dev.azure.com/abrig/"
+        },
+        "account": {
+            "id": "66a3ab6d-15a3-4ec3-9ca3-eff42055eef9",
+            "baseUrl": "https://dev.azure.com/abrig/"
+        },
+        "project": {
+            "id": "efd47cfd-d35f-40ba-b424-e1ab432fdc68",
+            "baseUrl": "https://dev.azure.com/abrig/"
+        }
+    },
+    "createdDate": "2019-10-02T19:57:48.7584186Z"
+}
