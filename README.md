@@ -57,7 +57,7 @@ See Step 4 for [Spektate Onboarding](https://github.com/Microsoft/spektate#onboa
 
 What this means is that **latest_commit** above will not be in any service hook JSON payload since it is a custom point in time variable. The above snippet is appended to a client's _azure-pipelines.yaml_ file.
 
-There are ways to get around this but they involve creating [artifacts](https://docs.microsoft.com/en-us/azure/devops/artifacts/overview?view=azure-devops&viewFallbackFrom=vsts) or modifiying a customer's existing YAML file. 
+There are ways to get around this but they involve creating [artifacts](https://docs.microsoft.com/en-us/azure/devops/artifacts/overview?view=azure-devops&viewFallbackFrom=vsts) or modifiying a customer's existing YAML file. We can also find ways to get the commit id of the manifest repository in a more passive way (outside of the Azure pipeline process). 
 
 Another caveat is that one can argue more complexity is introduced with the  moving pieces with Azure Functions and Queues. One must wieght the benefits of decoupling with more components. 
 
