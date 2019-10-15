@@ -47,7 +47,7 @@ See Step 4 for [Spektate Onboarding](https://github.com/Microsoft/spektate#onboa
 - script: |
     cd "$HOME"
     cd hello-bedrock-manifest
-    <b>latest_commit=$(git rev-parse --short HEAD)<b>
+    <b>latest_commit=$(git rev-parse --short HEAD)</b>
     cd ../spektate/pipeline-scripts
     source venv/bin/activate
     echo "python update_pipeline.py $(ACCOUNT_NAME) $(ACCOUNT_KEY) $(TABLE_NAME) $(PARTITION_KEY) p3 $(Build.BuildId) manifestCommitId $latest_commit"
