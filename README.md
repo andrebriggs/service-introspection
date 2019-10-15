@@ -2,19 +2,68 @@
 
 This repository covers an alternative approach to decorating Azure Devops Pipelines with metadata to achieve knowledge of the status of a GitOps flow.
 
-## Spektate
+## What is Spektate?
 [Spektate](https://github.com/Microsoft/spektate) is a dashboard tool to allows a holistic view of container based applications as they flow from source code to container registries to _high level definition_ repositories, _manifest_ repositories and finally Kubernetes cluster deployment.
 
-The visual respresentation is seen below:
 ![spektate.png](spektate.png)
 
+## What is SPK?
 
-## Alternative Method To Retrieve CI/CD Metadata
+[SPK](https://github.com/CatalystCode/spk) is a CLI tool that helps automate cloud infrastructure and service management. Moreover, SPK provides _service introspection_. Spektate and SPK overlap in the _service introspection_ area and will eventually merge.
+
+## Why do we want an alternative method to retrieve CI/CD metadata?
+Spektate requires a client must modify their existing Azure Pipelines YAML files in order to decorate telemetry information. This telemetry is recorded and the begin and ends of Azure pipeline runs and is sent to indexed storage. The key point is that a user must add this telemetry explicity in their production configuration.
+
+Being able to capture this _telemetry_ passively would yield several benefits:
+- Better Speketate onboarding user experience
+- Less coupling to custom solutions 
+
+## How would we achieve less coupling and a better onboarding experience?
 
 ![service-introspection.png](service-introspection.png)
 
+The diagram above has can be read through the following steps:
+
+1. Developers make changes to various Git repositories
+2. Git repository changes trigger associated Azure Pipelines
+3. Azure DevOps is configured via service hooks to post JSON messages in an Azure Queue
+4. An Azure Function is configured to be queue triggered and listen for enqueued messages
+5. The Azure Functions processes the messages against the indexed storage and determines whether to add or update records.
+6. The SPK CLI or the Spektate Dashboard can consume information about where applications are in the CI/CD pipeline. 
+
+## How would we deploy?
+
+All cloud infra (Azure DevOps Project, Azure Storage pieces, Azure Function) can be deployed by SPK. The Azure DevOps project and the Azure Queue are decoupled. This means service introspection can easily be added to existing Azure DevOps projects.
+
+## How would we manage?
+
+The introduction of queues means one must deal with all the issues of queues (expiration, dead letter queues, etc). The processor (Az Functions) must be idempotent and must use defensive coding techniqiues when updating and inserting against the indexed storage layer. The indexed storage layer must be cleaned up after a while.
+
+## Caveats with this approach
+The main issue in my investigation is that the existing Spektate is able to retrieve the latest Git commit id of the _manifest repo_. Technically the manifest repo isn't connected to a pipeline, but rather is an imported artifact of _HLD_ repository.
+
+See Step 4 for [Spektate Onboarding](https://github.com/Microsoft/spektate#onboard-a-bedrock-project-to-use-spektate):
+<pre>
+- script: |
+    cd "$HOME"
+    cd hello-bedrock-manifest
+    <b>latest_commit=$(git rev-parse --short HEAD)<b>
+    cd ../spektate/pipeline-scripts
+    source venv/bin/activate
+    echo "python update_pipeline.py $(ACCOUNT_NAME) $(ACCOUNT_KEY) $(TABLE_NAME) $(PARTITION_KEY) p3 $(Build.BuildId) manifestCommitId $latest_commit"
+    python update_pipeline.py $(ACCOUNT_NAME) $(ACCOUNT_KEY) $(TABLE_NAME) $(PARTITION_KEY) p3 $(Build.BuildId) manifestCommitId $latest_commit
+  displayName: Update commit id in database
+</pre>
+
+What this means is that **latest_commit** above will not be in any service hook JSON payload since it is a custom point in time variable. The above snippet is appended to a client's _azure-pipelines.yaml_ file.
+
+There are ways to get around this but they involve creating [artifacts](https://docs.microsoft.com/en-us/azure/devops/artifacts/overview?view=azure-devops&viewFallbackFrom=vsts) or modifiying a customer's existing YAML file. 
+
+Another caveat is that one can argue more complexity is introduced with the  moving pieces with Azure Functions and Queues. One must wieght the benefits of decoupling with more components. 
 
 ## Examples of Service Hook Event Payloads
+Below are examples of the JSON payloads that Azure DevOps sends to the queue. We us the `jq` tool to parse the payloads and extracts relevant data that would be stored in indexed storage.
+
 ### Build Started
 
 `$ cat example-json/started_build.json | jq '.eventType, .createdDate, .message.text, .resource.run.pipeline.id,.resource.run.name, .resource.run.id'`
@@ -66,3 +115,4 @@ The visual respresentation is seen below:
 "2019-10-02T21:56:04.844615Z"
 "2019-10-02T22:00:04.8462149Z"
 ```
+
