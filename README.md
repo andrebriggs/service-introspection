@@ -1,9 +1,9 @@
 # Using AzDO Service Hooks to Enable Service Introspection
 
-This repository covers an alternative approach to decorating Azure Devops Pipelines with metadata to achieve knowledge of the status of a GitOps flow.
+This repository covers an alternative approach to decorating Azure Devops Pipelines with metadata to achieve knowledge of the status of a GitOps flow using [Bedrock](aka.ms/bedrock) patterns.
 
 ## What is Spektate?
-[Spektate](https://github.com/Microsoft/spektate) is a dashboard tool to allows a holistic view of container based applications as they flow from source code to container registries to _high level definition_ repositories, _manifest_ repositories and finally Kubernetes cluster deployment.
+[Spektate](https://github.com/Microsoft/spektate) is a dashboard tool to allows a holistic view of container based applications as they flow from source code to container registries to _high level definition_ repositories, _manifest_ repositories and finally Kubernetes cluster deployment. 
 
 ![spektate.png](spektate.png)
 
@@ -12,11 +12,12 @@ This repository covers an alternative approach to decorating Azure Devops Pipeli
 [SPK](https://github.com/CatalystCode/spk) is a CLI tool that helps automate cloud infrastructure and service management. Moreover, SPK provides _service introspection_. Spektate and SPK overlap in the _service introspection_ area and will eventually merge.
 
 ## Why do we want an alternative method to retrieve CI/CD metadata?
-Spektate requires a client must modify their existing Azure Pipelines YAML files in order to decorate telemetry information. This telemetry is recorded and the begin and ends of Azure pipeline runs and is sent to indexed storage. The key point is that a user must add this telemetry explicity in their production configuration.
+Spektate requires a client must modify their existing Azure Pipelines YAML files in order to decorate telemetry information. This telemetry is recorded at the beginning and end of Azure pipeline runs. The recorded data is sent to indexed storage. The key point is that a user must add this telemetry explicity modify their production configuration. 
 
 Being able to capture this _telemetry_ passively would yield several benefits:
 - Better Spektate onboarding user experience
-- Less coupling to custom solutions 
+- Less coupling to custom solutions
+- Allow SPK service introspection to evolve separately from "client code"
 
 ## How would we achieve less coupling and a better onboarding experience?
 
@@ -31,14 +32,14 @@ The diagram above has can be read through the following steps:
 5. The Azure Functions processes the messages against the indexed storage and determines whether to add or update records.
 6. The SPK CLI or the Spektate Dashboard can consume information about where applications are in the CI/CD pipeline. 
 
-## How would we deploy?
+## How would we deploy this approach?
 
-All cloud infra (Azure DevOps Project, Azure Storage pieces, Azure Function) can be deployed by SPK. The Azure DevOps project and the Azure Queue are decoupled. This means service introspection can easily be added to existing Azure DevOps projects.
+All cloud infra (Azure DevOps Project, Azure Storage pieces, Azure Function) can be deployed by SPK. The Azure DevOps project and the Azure Queue are decoupled from the rest of the solution. This means service introspection can easily be added to existing Azure DevOps projects.
 
 We can use the Azure DevOps API to programmatically create service hooks that map to the Azure Storage:
 ![service-hooks.png](service-hooks.png)
 
-## How would we manage?
+## What type of management needs to be maintained for this approach?
 
 The introduction of queues means one must deal with all the issues of queues (expiration, dead letter queues, etc). The processor (Az Functions) must be idempotent and must use defensive coding techniqiues when updating and inserting against the indexed storage layer. The indexed storage layer must be cleaned up after a while.
 
@@ -65,7 +66,9 @@ There are ways to get around this but they involve creating [artifacts](https://
 Another caveat is that one can argue more complexity is introduced with the  moving pieces with Azure Functions and Queues. One must wieght the benefits of decoupling with more components. 
 
 ## Examples of Service Hook Event Payloads
-Below are examples of the JSON payloads that Azure DevOps sends to the queue. We us the `jq` tool to parse the payloads and extracts relevant data that would be stored in indexed storage.
+Below are examples of the JSON payloads that Azure DevOps sends to the queue. We us the `jq` tool to parse the payloads and extracts relevant data that would be stored in indexed storage. One could imagine how an Azure Function would extract data from the JSON queue messages.
+
+These examples use JSON files that are in this repository.
 
 ### Build Started
 
