@@ -39,7 +39,7 @@ The diagram above has can be read through the following steps:
 
 All cloud infra (Azure DevOps Project, Azure Storage pieces, Azure Function) can be deployed by SPK. The Azure DevOps project and the Azure Queue are decoupled from the rest of the solution. This means service introspection can easily be added to existing Azure DevOps projects.
 
-We can use the Azure DevOps API to programmatically create service hooks that map to the Azure Storage:
+We can use the Azure DevOps API to [programmatically](https://docs.microsoft.com/en-us/rest/api/azure/devops/hooks/subscriptions/create%20subscriptions%20query?view=azure-devops-rest-5.1) create service hooks that map to the Azure Storage:
 ![service-hooks.png](service-hooks.png)
 
 ## What type of management needs to be maintained for this approach?
