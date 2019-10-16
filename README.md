@@ -12,11 +12,14 @@ This repository covers an alternative approach to decorating Azure Devops Pipeli
 [SPK](https://github.com/CatalystCode/spk) is a CLI tool that helps automate cloud infrastructure and service management. Moreover, SPK provides _service introspection_. Spektate and SPK overlap in the _service introspection_ area and will eventually merge.
 
 ## Why do we want an alternative method to retrieve CI/CD metadata?
-Spektate requires a client must modify their existing Azure Pipelines YAML files in order to decorate telemetry information. This telemetry is recorded at the beginning and end of Azure pipeline runs. The recorded data is sent to indexed storage. The key point is that a user must add this telemetry explicity modify their production configuration. 
+Spektate requires a client must modify their existing `azure-pipelines.yaml` file in order to decorate telemetry information. This telemetry is recorded at the beginning and end of Azure pipeline runs. The recorded data is sent to indexed storage. The key point is that a user must add this telemetry explicity modify their production configuration. 
+
+The also must do this for each new pipeline they wish to add. That means if a client has 12 microservices across 12 pipelines each `azure-pipelines.yaml` file must be tediously decorated! 😬
 
 Being able to capture this _telemetry_ passively would yield several benefits:
 - Better Spektate onboarding user experience
-- Less coupling to custom solutions
+- Less coupling to custom solutions. 
+- All pipelines funnel into one place.
 - Allow SPK service introspection to evolve separately from "client code"
 
 ## How would we achieve less coupling and a better onboarding experience?
