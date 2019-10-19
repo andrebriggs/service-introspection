@@ -16,12 +16,6 @@ Spektate requires a client must modify their existing `azure-pipelines.yaml` fil
 
 The also must do this for each new pipeline they wish to add. That means if a client has 12 microservices across 12 pipelines each `azure-pipelines.yaml` file must be tediously decorated! 😬
 
-Being able to capture this _telemetry_ passively would yield several benefits:
-- Better Spektate onboarding user experience
-- Less coupling to custom solutions. 
-- All pipelines funnel into one place.
-- Allow SPK service introspection to evolve separately from "client code"
-
 ## How would we achieve less coupling and a better onboarding experience?
 
 ![service-introspection.png](service-introspection.png)
@@ -34,6 +28,15 @@ The diagram above has can be read through the following steps:
 4. An Azure Function is configured to be queue triggered and listen for enqueued messages
 5. The Azure Functions processes the messages against the indexed storage and determines whether to add or update records.
 6. The SPK CLI or the Spektate Dashboard can consume information about where applications are in the CI/CD pipeline. 
+
+**TLDR;** Essentially we use the service hooks feature of Azure DevOps as a changelog publisher. We subscribe and process to changes to pipeline state and metadata that are logged.
+
+This leads to several benefits:
+- Better Spektate onboarding user experience 🍻
+- Less coupling to custom solutions. 🙅🏾‍♂️
+- All pipelines funnel into one place. ⛳️
+- Allow SPK service introspection to evolve separately from "client code" 🗿
+- Easier testing 🥳
 
 ## How would we deploy this approach?
 
