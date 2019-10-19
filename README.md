@@ -1,4 +1,4 @@
-# Using AzDO Service Hooks to Enable Service Introspection in Bedrock
+# AzDO Service Hooks As A Changelog To Enable Service Introspection In Bedrock
 
 This repository covers an alternative approach to decorating Azure Devops Pipelines with metadata to achieve knowledge of the status of a GitOps flow using [Bedrock](aka.ms/bedrock) patterns.
 
